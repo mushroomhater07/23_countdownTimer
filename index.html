@@ -48,10 +48,12 @@
                 rest = false;
                 time = 25 * 60;
                 $(".title").html("毅の時間")
+                $(`button[onclick="switch1();"]`).html("康の時間")
               } else {
                 rest = true;
                 time = 5 * 60;
                 $(".title").html("康の時間")
+                $(`button[onclick="switch1();"]`).html("毅の時間")
               }
             }
           }
@@ -62,8 +64,8 @@
             else{isPause = true; $(`button[onclick="pause();"]`).html("Resume")}
         }
         function switch1(params) {
-            if(rest) {time = 0;$(`button[onclick="switch1();"]`).html("Pause")}
-            else{time = 0; $(`button[onclick="switch1();"]`).html("Resume")}
+            if(rest) {time = 0;$(`button[onclick="switch1();"]`).html("康の時間")}
+            else{time = 0; $(`button[onclick="switch1();"]`).html("毅の時間")}
         }
         // let counter = 5;
         // const interval = setInterval(() => {counter--;
