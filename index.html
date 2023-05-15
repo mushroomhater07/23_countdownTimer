@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@600&display=swap" rel="stylesheet"><style>
+        body{
+            height: 100vh;
+            width: 100vw;
+            background-color: #222;
+            color: #ddd;
+            font-size: 50px;
+            text-align: center;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        body > *{
+            text-decoration: none;
+        }
+        button{
+            background: transparent;
+            border-radius: 50px;
+            border: #ddd 1px solid;
+            height: 50px;width: 100px;
+        }
+        button:hover{
+            background: #ddd;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        var isPause = false;var rest = true;var time = 0;
+      $("document").ready(() => {
+        
+        setInterval(() => {
+          if (!isPause) {
+            $(".root").html(
+              `${String(Math.floor(time / 60)).padStart(2, "0")}:${String(
+                time % 60
+              ).padStart(2, "0")}` );
+            time--;
+            if (time <= 0) {
+              if (rest) {
+                rest = false;
+                time = 25 * 60;
+                $(".title").html("毅の時間")
+              } else {
+                rest = true;
+                time = 5 * 60;
+                $(".title").html("康の時間")
+              }
+            }
+          }
+        }, 1000);
+    });
+    function pause(){
+            if(isPause) {isPause = false;$(`button[onclick="pause();"]`).html("Pause")}
+            else{isPause = true; $(`button[onclick="pause();"]`).html("Resume")}
+        }
+        function switch1(params) {
+            if(rest) {time = 0;$(`button[onclick="switch1();"]`).html("Pause")}
+            else{time = 0; $(`button[onclick="switch1();"]`).html("Resume")}
+        }
+        // let counter = 5;
+        // const interval = setInterval(() => {counter--;
+        //   if(counter < 0) clearInterval(interval);},1000);
+    
+    </script>
+  </head>
+  <body>  
+        <a href="https://www.youtube.com/watch?v=X0ozVfGkOko">番茄鐘工作方法</a>
+        <div class="title"></div>
+        <div class="root"></div>
+        <button onclick="pause();">Pause</button>
+        <button onclick="switch1();">Switch</button>
+    
+   
+    
+
+
+    
+  </body>
+</html>
